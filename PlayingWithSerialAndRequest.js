@@ -97,3 +97,27 @@ myPort.on('open', showPortOpen);
 parser.on('data', readSerialData);
 myPort.on('close', showPortClose);
 myPort.on('error', showError);
+
+var request = require('request');
+request('http://plantwatcherbot.azurewebsites.net/api/Events', function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+});
+
+var request = require('request');
+
+var options = {
+  uri: 'http://plantwatcherbot.azurewebsites.net/api/Events',
+  method: 'POST',
+  json: {
+    "Message": "Test",
+    "DateAdded": "11-26-2017 18:55"
+  }
+};
+
+request(options, function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+});
